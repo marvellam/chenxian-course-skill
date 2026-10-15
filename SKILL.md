@@ -105,11 +105,25 @@ python scripts/build_outline_editable.py
 
 ### 第五步：复制到 NAS
 
-导出完成后，询问用户 NAS 目标路径（例如 `W:\图片\1.课程\2026_陈衔中国美术史\1 详情页\第一版修订N_YYYYMMDD`）。
+大纲图生成后，读取 `config.json` 中的 `nas_base` 字段，拼上本次版本目录名（例如 `第一版修订N_YYYYMMDD`），构成完整目标路径。
 
-用户提供路径后，将整个 `output/detail-export-v1-YYYYMMDD/` 目录复制到该路径：
+默认 NAS 路径（一艺之间企业网盘，`\\172.16.5.11`，盘符 `Z:`）：
+```
+Z:\图片\1.课程\2026_陈衔中国美术史\1 详情页\第一版修订N_YYYYMMDD
+```
+
+将以下文件复制到上述目录：
+- `output/outline-editable-v1/课程大纲_三篇合并_YYYYMMDD.png`（大纲合并图，替换第06张）
+- `output/outline-editable-v1/课程大纲_1_山水篇.png`
+- `output/outline-editable-v1/课程大纲_2_花鸟篇.png`
+- `output/outline-editable-v1/课程大纲_3_人物篇.png`
+- `output/outline-editable-v1/content.json`（文案备份）
+
+注意事项：
 - 如果目标路径已存在，先告知用户再确认
-- 复制完成后报告文件数量，不做 SHA256 重验（导出时已验证）
+- 如果 `Z:` 不可达，提示用户检查 NAS 连接，或告知实际盘符，不要静默失败
+- 如果用户的盘符与 `config.json` 不同，按用户提供的路径操作，并提示更新 `config.json`
+- 旧版本目录保留，不覆盖
 
 ---
 
