@@ -7,7 +7,9 @@
 
 ## 这个工具做什么
 
-从飞书多维表格读取最新课程大纲 → 与现有内容对比 → 生成可视化预览 → 确认后导出图片 → 复制到 NAS。
+从飞书多维表格读取最新课程大纲 → 与现有内容对比 → 生成可视化预览 → 确认后导出大纲图片 → 复制到 NAS。
+
+**范围：只负责课程大纲部分（详情页第06张）的日常更新。** 完整详情页的重新导出由 `scripts/export_detail_v1.py` 单独完成，不属于日常流程。
 
 全程不需要同事手动编辑任何 HTML、JSON 或代码。
 
@@ -91,21 +93,15 @@ python scripts/build_outline_editable.py
 
 告知用户：预览文件已生成，请检查内容和排版，确认后告知是否导出。
 
-### 第四步：确认导出
+### 第四步：确认导出大纲图
 
-用户确认预览无误后，运行：
+用户确认预览无误后，将三篇合并大纲图复制到本机交付目录：
 
-```
-python scripts/export_detail_v1.py --output detail-export-v1-YYYYMMDD --version "第一版修订N" --date YYYY-MM-DD --change-note "本次更新内容简述"
-```
+`build_outline_editable.py` 已在上一步生成：
+- `output/outline-editable-v1/课程大纲_三篇合并_YYYYMMDD.png`（1080px 宽，三篇含序章合并）
+- 各篇单独 PNG 和 390px 预览图
 
-将 `YYYYMMDD`、`N`、日期、变更说明替换为本次实际值。
-
-脚本输出到 `output/detail-export-v1-YYYYMMDD/`，包含：
-- 两平台各 8 张 JPG（1080px 宽）
-- 可编辑备份 HTML（内嵌所有资源）
-- `交付校验清单.json`（含每个文件的 SHA256）
-- `上传顺序与版本说明.md`
+这张合并图即为详情页第 06 张的更新来源，不需要重新导出完整详情页的其余 7 张。
 
 ### 第五步：复制到 NAS
 
