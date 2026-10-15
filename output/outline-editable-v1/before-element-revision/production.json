@@ -1,0 +1,237 @@
+{
+  "source_revision": 792,
+  "lecture_count": 24,
+  "counts": [
+    10,
+    10,
+    4
+  ],
+  "lesson_font": 44,
+  "faq_font": 44,
+  "notes": "Plain editable HTML text with independent image assets; PNG files are static composition proofs, not browser screenshots.",
+  "main_page_platform": "wechat",
+  "metrics": [
+    {
+      "module": 1,
+      "number": 1,
+      "title": "中国古代山水画概览",
+      "top": 604,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 2,
+      "title": "山水画的两种风格——文人画与院体画",
+      "top": 716,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 3,
+      "title": "山水画的情怀与园林",
+      "top": 828,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 4,
+      "title": "山水画的演变：从隋到南宋",
+      "top": 940,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 5,
+      "title": "山水画的演变：元代山水（上）",
+      "top": 1052,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 6,
+      "title": "山水画的演变：元代山水（下）",
+      "top": 1164,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 7,
+      "title": "山水画的演变：明代山水（上）",
+      "top": 1276,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 8,
+      "title": "山水画的演变：明代山水（下）",
+      "top": 1388,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 9,
+      "title": "山水画的演变：清代山水",
+      "top": 1500,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 1,
+      "number": 10,
+      "title": "山水画的演变：近代以来的山水画",
+      "top": 1612,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 1,
+      "title": "中国古代花鸟画概览",
+      "top": 308,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 2,
+      "title": "花鸟画的两种风格——工笔画与写意画",
+      "top": 420,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 3,
+      "title": "花鸟画中的文人意趣",
+      "top": 532,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 4,
+      "title": "花鸟画的雏形：从唐到五代",
+      "top": 644,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 5,
+      "title": "花鸟画的鼎盛：宋代花鸟（上）",
+      "top": 756,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 6,
+      "title": "花鸟画的鼎盛：宋代花鸟（下）",
+      "top": 868,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 7,
+      "title": "花鸟画的演变：元代花鸟",
+      "top": 980,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 8,
+      "title": "花鸟画的演变：明代花鸟",
+      "top": 1092,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 9,
+      "title": "花鸟画的演变：清代花鸟",
+      "top": 1204,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 2,
+      "number": 10,
+      "title": "花鸟画的演变：近代以来的花鸟画",
+      "top": 1316,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 3,
+      "number": 1,
+      "title": "中国人物画概览（上）",
+      "top": 308,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 3,
+      "number": 2,
+      "title": "中国人物画概览（下）",
+      "top": 420,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 3,
+      "number": 3,
+      "title": "唐宋时期的人物画特征",
+      "top": 532,
+      "row_height": 88,
+      "font_size": 44
+    },
+    {
+      "module": 3,
+      "number": 4,
+      "title": "明清时期的人物画特征",
+      "top": 644,
+      "row_height": 88,
+      "font_size": 44
+    }
+  ],
+  "panels": [
+    {
+      "name": "课程大纲_1_山水篇",
+      "size": [
+        1080,
+        1748
+      ]
+    },
+    {
+      "name": "课程大纲_2_花鸟篇",
+      "size": [
+        1080,
+        1452
+      ]
+    },
+    {
+      "name": "课程大纲_3_人物篇",
+      "size": [
+        1080,
+        780
+      ]
+    },
+    {
+      "name": "课程须知与问题_微信小店版",
+      "size": [
+        1080,
+        2569
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+Create a square, text-free editorial background plate for the opening of a Chinese art-history course detail page, using the supplied Ni Zan painting fragment as the only pictorial source and visual reference. Contemporary museum-publication art direction.
+
+Canvas: square composition. Base color is near-white neutral warm grey cotton paper, approximately RGB 245,244,240 / #f5f4f0, with almost invisible fine paper grain. Clean off-white page continuation feel.
+
+Strict layout:
+- The uppermost 34% of the image must remain completely empty clean off-white paper, reserved for a title.
+- The leftmost 60% through the middle must remain very pale, open, and calm, reserved for a quote.
+- Only the RIGHT side, approximately x=66% to x=100%, y=33% to y=85%, contains a delicate, low-contrast fragment derived from the supplied Ni Zan painting: quiet distant shore, sparse original trees, faint mountain contours, recognizable ink gestures, muted grey-green ink. Do not invent an ornate Chinese landscape.
+- The lower 15% must dissolve completely into the exact same uniform near-white paper base, no horizon line or dark ending, so a long page can continue below without seam.
+- All four edges should remain the same near-white paper, except a few faint landscape strokes entering naturally from the far right in the middle.
+
+Editing requirements:
+- Remove every red seal and inscription from the source.
+- No text, no captions, no calligraphy, no logo.
+- No people.
+- No separate panels, no white rectangles, no border, no frame.
+- No aged parchment look, no yellow antique paper, no brown stains, no torn edges.
+- No light shafts, shadows, vignette, or geometric decoration.
+- Very low contrast, muted grey-green ink; detail discernible but quiet.
+- 85% calm negative space. Background only, not a standalone poster.

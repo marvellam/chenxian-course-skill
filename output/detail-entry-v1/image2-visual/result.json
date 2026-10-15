@@ -1,0 +1,23 @@
+{
+  "model_requested": "gpt-image-2",
+  "endpoint_type": "/images/edits",
+  "size_requested": "1536x1536",
+  "n": 1,
+  "inputs": [
+    {
+      "file": "01-ni-zan-crop.png",
+      "sha256": "0c3969668caf468fa2afbfe3d80296b9da069c460e4e24561d550b782ff1b329"
+    }
+  ],
+  "brief_revision": 356,
+  "postprocessing": "None on generated PNG",
+  "http_status": 200,
+  "elapsed_seconds": 35.9,
+  "actual_size": [
+    1254,
+    1254
+  ],
+  "output_bytes": 1851004,
+  "output_file": "china-art-history-image2-raw.png",
+  "created": 1791354944
+}

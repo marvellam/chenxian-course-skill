@@ -1,0 +1,20 @@
+/* Shared chapter heading: frame is text-free; replace only the h2 content. */
+.section-heading {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 456px;
+  height: 80px;
+  margin: 92px auto 32px;
+  background: url("section-heading-frame.svg") center / 100% 100% no-repeat;
+  color: #304e46;
+}
+.section-heading h2 {
+  margin: 0;
+  padding: 0 0 5px;
+  font-family: "Source Han Serif CN", "Noto Serif CJK SC", serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}

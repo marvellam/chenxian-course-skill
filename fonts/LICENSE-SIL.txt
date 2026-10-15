@@ -1,0 +1,12 @@
+思源黑体（Source Han Sans）和思源宋体（Source Han Serif）
+
+版权所有 © 2014-2023 Adobe Systems Incorporated (http://www.adobe.com/)
+
+本字体文件依据 SIL 开放字体许可证（SIL Open Font License，OFL）1.1 版授权。
+OFL 允许将字体用于商业和非商业用途，允许随软件或文档一起发布，允许进行修改。
+
+完整许可证文本：https://scripts.sil.org/OFL
+
+字体下载来源：
+- 思源黑体：https://github.com/adobe-fonts/source-han-sans
+- 思源宋体：https://github.com/adobe-fonts/source-han-serif

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中国美术史｜原画构图测试</title>
+  <style>
+    :root {
+      --paper: #f1eadc;
+      --ink: #2f5147;
+      --ink-soft: #65766c;
+      --red: #9e6c58;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #d9d0c0; }
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      font-family: "Source Han Sans CN", "Source Han Sans", sans-serif;
+    }
+    .cover {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--paper);
+      box-shadow: 0 24px 72px rgba(48, 43, 35, 0.18);
+    }
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.14), rgba(255,255,255,0) 42%),
+        repeating-linear-gradient(0deg, rgba(47,81,71,.025) 0 1px, transparent 1px 18px);
+      mix-blend-mode: multiply;
+    }
+    .art-window {
+      position: absolute;
+      top: 98px;
+      right: 0;
+      width: 610px;
+      height: 1225px;
+      overflow: hidden;
+      background: #e9dfce;
+    }
+    .art-window img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 70%;
+      display: block;
+      filter: saturate(.78) contrast(.96);
+      mix-blend-mode: multiply;
+      opacity: .88;
+    }
+    .art-window::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--paper) 0%, rgba(241,234,220,.72) 9%, rgba(241,234,220,0) 35%);
+      pointer-events: none;
+    }
+    .art-caption {
+      position: absolute;
+      right: 46px;
+      bottom: 32px;
+      z-index: 2;
+      font-family: "Source Han Serif CN", "Source Han Serif", serif;
+      font-size: 23px;
+      letter-spacing: .08em;
+      color: rgba(47,81,71,.74);
+    }
+    .title-area {
+      position: absolute;
+      z-index: 3;
+      left: 80px;
+      top: 190px;
+      width: 520px;
+    }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 30px;
+      letter-spacing: .12em;
+      color: var(--ink-soft);
+    }
+    .kicker::before {
+      content: "";
+      width: 38px;
+      height: 2px;
+      background: var(--ink);
+    }
+    .eyebrow {
+      margin: 170px 0 28px;
+      font-family: "Source Han Serif CN", "Source Han Serif", serif;
+      font-size: 63px;
+      line-height: 1;
+      letter-spacing: .08em;
+      font-weight: 400;
+    }
+    h1 {
+      margin: 0;
+      font-family: "Source Han Serif CN", "Source Han Serif", serif;
+      font-size: 172px;
+      line-height: .9;
+      letter-spacing: .04em;
+      font-weight: 700;
+    }
+    .title-rule {
+      width: 360px;
+      height: 3px;
+      margin-top: 40px;
+      background: var(--ink);
+    }
+    .course-note {
+      margin-top: 26px;
+      font-size: 31px;
+      line-height: 1.6;
+      letter-spacing: .06em;
+      color: var(--ink-soft);
+    }
+    .quote-panel {
+      position: absolute;
+      z-index: 3;
+      left: 80px;
+      bottom: 238px;
+      width: 700px;
+      padding: 38px 46px 42px;
+      color: var(--paper);
+      background: var(--ink);
+    }
+    .quote-panel::before {
+      content: "“";
+      position: absolute;
+      top: -36px;
+      left: 28px;
+      font-family: Georgia, serif;
+      font-size: 94px;
+      line-height: 1;
+      color: var(--red);
+    }
+    .quote {
+      margin: 0;
+      font-family: "Source Han Serif CN", "Source Han Serif", serif;
+      font-size: 40px;
+      line-height: 1.45;
+      letter-spacing: .02em;
+      font-weight: 600;
+    }
+    .meta {
+      display: flex;
+      gap: 32px;
+      margin-top: 28px;
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: .08em;
+      color: rgba(241,234,220,.72);
+    }
+    .meta span + span::before {
+      content: "/";
+      margin-right: 32px;
+      color: rgba(241,234,220,.48);
+    }
+    .bottom-note {
+      position: absolute;
+      z-index: 3;
+      left: 80px;
+      bottom: 112px;
+      font-size: 26px;
+      letter-spacing: .08em;
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+<body>
+  <main class="cover" aria-label="陈衔说中国美术史课程入口封面测试">
+    <div class="art-window">
+      <img src="../../assets/artworks/provided/元_倪瓒_容膝斋图_1.jpg" alt="元代倪瓒《容膝斋图》局部">
+      <div class="art-caption">元 · 倪瓒《容膝斋图》局部</div>
+    </div>
+    <section class="title-area">
+      <div class="kicker">陈衔说 · 中国美术史</div>
+      <p class="eyebrow">说给所有人听的</p>
+      <h1>中国<br>美术史</h1>
+      <div class="title-rule"></div>
+      <p class="course-note">从观念演变出发，理解<br>山水 / 花鸟 / 人物</p>
+    </section>
+    <section class="quote-panel">
+      <p class="quote">了解艺术史，就是了解人类意趣变化的历史。</p>
+      <div class="meta">
+        <span>持续更新中</span>
+        <span>共3大系列24章节</span>
+      </div>
+    </section>
+    <div class="bottom-note">一门从作品出发，重新理解中国人的生活理想的美术史课程</div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "type": "design",
+  "designSystems": [],
+  "primaryDesignSystem": null,
+  "assets": {
+    "中国美术史课程大纲与须知（微信小店）": {
+      "versions": [
+        {
+          "path": "课程大纲与须知_可编辑母版_微信小店版.html",
+          "createdAt": "2026-10-08T16:38:16.222Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1080
+          }
+        }
+      ]
+    },
+    "中国美术史课程大纲与须知（小红书）": {
+      "versions": [
+        {
+          "path": "课程大纲与须知_可编辑母版_小红书版.html",
+          "createdAt": "2026-10-08T16:38:16.352Z",
+          "status": "needs-review",
+          "viewport": {
+            "width": 1080
+          }
+        }
+      ]
+    }
+  },
+  "createdAt": "2026-10-08T16:38:16.231Z",
+  "updatedAt": "2026-10-08T16:38:16.353Z",
+  "latest_revision": {
+    "date": "2026-10-09",
+    "changes": [
+      "Remove FAQ section",
+      "Remove chapter prefixes without changing header height",
+      "Original-painting vector contour elements with outline",
+      "Bold customer-service claim tip"
+    ],
+    "verified": "Static proofs and HTML content/position checks; not browser screenshots"
+  }
+}

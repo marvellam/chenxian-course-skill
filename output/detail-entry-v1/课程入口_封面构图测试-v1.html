@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中国美术史｜封面构图测试</title>
+  <style>
+    :root {
+      --ink: #2f5147;
+      --ink-soft: #52665d;
+      --paper: #f2eadc;
+      --line: rgba(47, 81, 71, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: #ded5c5;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      font-family: "Source Han Sans CN", "Source Han Sans", sans-serif;
+    }
+
+    .cover {
+      position: relative;
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      color: var(--ink);
+      background: var(--paper) url("assets/cover-artdirected-image2-v1.png") center / cover no-repeat;
+      box-shadow: 0 24px 72px rgba(48, 43, 35, 0.18);
+    }
+
+    .cover::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(242, 234, 220, 0.26) 0%, rgba(242, 234, 220, 0.08) 54%, rgba(242, 234, 220, 0) 100%);
+    }
+
+    .safe-zone {
+      position: absolute;
+      left: 82px;
+      top: 76px;
+      width: 840px;
+    }
+
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 30px;
+      letter-spacing: 0.12em;
+      color: var(--ink-soft);
+    }
+
+    .kicker::before {
+      content: "";
+      width: 42px;
+      height: 2px;
+      background: var(--ink);
+    }
+
+    .title-block {
+      margin-top: 178px;
+    }
+
+    .eyebrow {
+      margin: 0 0 28px;
+      font-family: "Source Han Serif CN", "Source Han Serif", serif;
+      font-size: 74px;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Source Han Serif CN", "Source Han Serif", serif;
+      font-size: 168px;
+      line-height: 0.98;
+      letter-spacing: 0.015em;
+      font-weight: 700;
+    }
+
+    .title-rule {
+      width: 560px;
+      height: 3px;
+      margin-top: 38px;
+      background: var(--ink);
+    }
+
+    .course-note {
+      margin-top: 26px;
+      font-size: 34px;
+      line-height: 1.55;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+    }
+
+    .quote {
+      position: absolute;
+      left: 82px;
+      bottom: 318px;
+      width: 900px;
+      padding-top: 26px;
+      border-top: 2px solid var(--line);
+      font-family: "Source Han Serif CN", "Source Han Serif", serif;
+      font-size: 43px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      font-weight: 600;
+    }
+
+    .meta {
+      position: absolute;
+      left: 82px;
+      bottom: 124px;
+      display: flex;
+      gap: 30px;
+      font-size: 31px;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+    }
+
+    .meta span + span::before {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 26px;
+      margin: 0 30px 0 0;
+      vertical-align: -3px;
+      background: var(--line);
+    }
+  </style>
+</head>
+<body>
+  <main class="cover" aria-label="陈衔说中国美术史课程入口封面测试">
+    <div class="safe-zone">
+      <div class="kicker">陈衔说 · 中国美术史</div>
+      <div class="title-block">
+        <p class="eyebrow">说给所有人听的</p>
+        <h1>中国美术史</h1>
+        <div class="title-rule"></div>
+        <p class="course-note">从观念演变出发，理解山水、花鸟与人物</p>
+      </div>
+    </div>
+
+    <blockquote class="quote">“了解艺术史，就是了解人类意趣变化的历史。”</blockquote>
+
+    <div class="meta">
+      <span>持续更新中</span>
+      <span>共3大系列24章节</span>
+    </div>
+  </main>
+</body>
+</html>

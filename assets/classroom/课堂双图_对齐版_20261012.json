@@ -1,0 +1,32 @@
+{
+  "source": "课堂双图_已确认_20261010.png",
+  "source_panels": [
+    [
+      98,
+      96,
+      1038,
+      599
+    ],
+    [
+      1100,
+      113,
+      2074,
+      623
+    ]
+  ],
+  "destination_panels": [
+    [
+      45,
+      42,
+      445,
+      240
+    ],
+    [
+      510,
+      42,
+      445,
+      240
+    ]
+  ],
+  "method": "Vector clipping of the existing accepted composite. Equal 445x240 panels, common top 42 and bottom 282. No generated pixels or new image model call."
+}

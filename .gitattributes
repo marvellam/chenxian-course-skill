@@ -1,0 +1,21 @@
+# Normalize line endings on checkout
+* text=auto
+
+# Force Unix line endings for scripts and text
+*.py    text eol=lf
+*.md    text eol=lf
+*.json  text eol=lf
+*.txt   text eol=lf
+*.css   text eol=lf
+*.html  text eol=lf
+*.svg   text eol=lf
+*.bat   text eol=crlf
+
+# Binary assets — never touch line endings
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.otf   binary
+*.ttc   binary
+*.ttf   binary
+*.pdf   binary

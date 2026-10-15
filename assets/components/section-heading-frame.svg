@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="456" height="80" viewBox="0 0 456 80" fill="none">
+  <title>章节标题无字框：依据已认可的老师介绍生成图重建</title>
+  <g stroke="#304e46" stroke-linecap="square">
+    <path d="M1 40H59M397 40H455" stroke-width="2"/>
+    <path d="M80 7H376Q378 15 388 18V62Q378 65 376 73H80Q78 65 68 62V18Q78 15 80 7Z" stroke-width="2.2"/>
+    <path d="M83 11H373Q376 18 384 21V59Q376 62 373 69H83Q80 62 72 59V21Q80 18 83 11Z" stroke-width="1.3"/>
+  </g>
+</svg>
