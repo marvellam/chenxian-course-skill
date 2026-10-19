@@ -5,6 +5,8 @@ from datetime import date as _date
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageChops
 from bs4 import BeautifulSoup
+from typography import (load_font, line_baseline, HEADING_FONT, HEADING_SIZE,
+                        HEADING_LEADING, HEADING_OFFSET)
 
 ROOT = Path(__file__).resolve().parent.parent
 PAGE = ROOT / 'output/detail-entry-v1/课程入口_可编辑母版.html'
@@ -24,29 +26,13 @@ PNG.mkdir(parents=True, exist_ok=True)
 
 PAPER = '#f1ebdf'; INK = '#304e46'; BODY = '#46534d'
 
-# Font resolution: package fonts/ first, then system fonts
-_PACKAGE_FONTS = ROOT / 'fonts'
-_SYSTEM_FONTS = Path.home() / 'AppData/Local/Microsoft/Windows/Fonts'
-
 FACES = {
     'sans':         'SourceHanSans-Regular.ttc',
     'medium':       'SourceHanSans-Medium.ttc',
     'serif':        'SourceHanSerifCN-Regular-1.otf',
     'serif-medium': 'SourceHanSerifCN-Medium-6.otf',
-    'serif-bold':   'SourceHanSerifCN-Bold-2.otf',
+    'serif-bold':   HEADING_FONT,
 }
-
-def _font_path(name):
-    p = _PACKAGE_FONTS / name
-    if p.exists():
-        return p
-    s = _SYSTEM_FONTS / name
-    if s.exists():
-        return s
-    raise FileNotFoundError(
-        f"Font '{name}' not found in {_PACKAGE_FONTS} or {_SYSTEM_FONTS}.\n"
-        "Install fonts from the fonts/ directory: select all, right-click, 'Install for all users'."
-    )
 
 html_text = PAGE.read_text(encoding='utf-8')
 soup = BeautifulSoup(html_text, 'html.parser')
@@ -54,7 +40,7 @@ records = []; native_lines = []
 
 
 def font(size, face='sans'):
-    return ImageFont.truetype(str(_font_path(FACES[face])), size)
+    return load_font(FACES[face], size)
 
 def canvas(h):
     return Image.new('RGB', (1080, round(h)), PAPER)
@@ -63,8 +49,8 @@ def advance(text, f, spacing=0):
     return f.getlength(text) + len(text) * spacing
 
 def line(im, text, x, y, size, leading, face='sans', fill=BODY, spacing=0, justify=None):
-    f = font(size, face); ascent, descent = f.getmetrics()
-    baseline = y + (leading - ascent - descent) / 2 + ascent
+    f = font(size, face)
+    baseline = line_baseline(f, y, leading)
     d = ImageDraw.Draw(im)
     if justify is not None and len(text) > 1:
         spacing = (justify - f.getlength(text)) / (len(text) - 1)
@@ -102,8 +88,9 @@ def para(im, text, x, y, size, width, leading, face='sans', fill=BODY, spacing=0
 def heading(im, text, y):
     frame = Image.open(ROOT / 'assets/components/section-heading-frame@2x.png').convert('RGBA').resize((456, 80), Image.Resampling.LANCZOS)
     im.paste(frame, (312, round(y)), frame)
-    f = font(52, 'serif-bold')
-    line(im, text, (1080 - f.getlength(text)) / 2, y + 11.5, 52, 52, 'serif-bold', INK)
+    f = font(HEADING_SIZE, 'serif-bold')
+    line(im, text, (1080 - f.getlength(text)) / 2, y + HEADING_OFFSET,
+         HEADING_SIZE, HEADING_LEADING, 'serif-bold', INK)
 
 def save(name, im):
     im.save(PNG / f'{name}.png', optimize=True)
@@ -175,7 +162,9 @@ footer_versions = {}
 for platform in ['微信小店版', '小红书版']:
     doc = BeautifulSoup((O / f'课程大纲与须知_可编辑母版_{platform}.html').read_text(encoding='utf-8'), 'html.parser')
     note = next(h for h in doc.select('h2') if h.get_text() == '课程须知')
-    note_top = float(re.search(r'top:([\d.]+)px', note['style'])[1]) - 7
+    if 'data-frame-top' not in note.attrs:
+        raise ValueError('Old outline output: run scripts/build_outline_editable.py before exporting.')
+    note_top = float(note['data-frame-top'])
     cut = round(note_top - 45)
     im = Image.open(O / f'课程须知与问题_{platform}.png').convert('RGB')
     claim = im.crop((0, 0, 1080, cut)); notes = im.crop((0, cut, 1080, im.height))

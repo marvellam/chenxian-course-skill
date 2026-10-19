@@ -1,3 +1,8 @@
+---
+name: chenxian-course-outline
+description: 更新陈衔中国美术史课程大纲，从已授权飞书内容生成可编辑母版和第06张大纲图，检查排版后按项目配置交付；全套详情页仅在明确要求时导出。
+---
+
 # 中国美术史课程大纲更新 Skill
 
 本 Skill 适用于任何支持本地工具调用的 AI Agent（Claude Code、Cursor、Windsurf 等）。
@@ -28,7 +33,9 @@ course-skill/
 ├── scripts/                  ← 排版与导出脚本
 │   ├── build_outline_editable.py
 │   ├── prepare_outline_elements.py
-│   └── export_detail_v1.py
+│   ├── export_detail_v1.py
+│   ├── typography.py         ← 两条导出路径共享的字体与标题定位
+│   └── verify_layout.py      ← 检查真实导出像素与文案
 ├── assets/                   ← 配图素材（原画裁切源等）
 └── output/
     ├── outline-editable-v1/  ← 大纲模板目录
@@ -91,6 +98,8 @@ python scripts/build_outline_editable.py
 
 **请用浏览器打开 HTML 文件预览**，拖动窗口边缘至约 390px 宽可模拟手机效果。PNG 文件是排版校验图，与 HTML 共用同一份文案和字号参数，但浏览器字体渲染与 Pillow 合成在 1-2px 级别有差异，导出以 PNG 为准。
 
+先运行 `python scripts/verify_layout.py`，检查简体字体、标题框内留白与大纲文字回读，再目视检查生成的 PNG（含390px预览）。检查失败时先定位原因，不将该图作为合格预览或交付图。
+
 告知用户：预览文件已生成，请检查内容和排版，确认后告知是否导出。
 
 ### 第四步：确认导出大纲图
@@ -137,6 +146,9 @@ Z:\图片\1.课程\2026_陈衔中国美术史\1 详情页\第一版修订N_YYYYM
 - 序章和分节题目前加小圆点（独立于文字，换行对齐文字左沿）
 - 篇章配图：原画素材 SVG 裁切，不生成仿古画，不加装饰印章
 - 字体：思源黑（正文）+ 思源宋（篇章标题）
+- 思源黑TTC须明确选择简体中文SC字面；随包字体中为index=2，HTML优先使用Source Han Sans SC。
+- 四字框内小标题统一使用思源宋Bold、52px，456×80框体；文字按共享行框基线定位，不能沿用正文的字形顶部定位。山水篇等无框篇章标题仍使用原Heavy字重。
+- 领取课程与课程须知的切图边界取框体位置，不根据文字top反推；详见共享排版代码与核验脚本。
 - 底色：`#f1ebdf`，主文字：`#46534d`，标题：`#304e46`
 - 当前图库权益：60张经典名作
 - 两平台各8张，06大纲图为三篇含序章合并
@@ -160,3 +172,11 @@ Z:\图片\1.课程\2026_陈衔中国美术史\1 详情页\第一版修订N_YYYYM
 
 `package-version.txt` 记录当前包版本。每次从 GitHub 拉取新版后，版本号会更新。
 如果有人告知包有更新，请从 GitHub 重新克隆或 `git pull`。
+
+GitHub仓库是本工具脚本与操作规则的统一维护来源；Claude、Codex等均在同一版本上继续维护。迁入其他制作目录已验证的修复时，保留本包的相对路径、随包字体与NAS配置，不能直接用本机专用脚本覆盖。
+
+### 维护排版或明确要求全套导出时
+
+先运行构建器，再运行 `python scripts/export_detail_v1.py --output detail-export-版本日期 --version 版本名称`，最后运行 `python scripts/verify_layout.py --export output/detail-export-版本日期`。旧构建结果缺少框体位置时须重建，不能通过猜测偏移继续切图。
+
+除自动核验外，目视检查03/04/06/07/08各标题及两平台最终成图。仅改标题时，使用相同文案和字体配置比较无损PNG：变化应限于标题区，正文、尺寸和无关模块不变；字体修复则单独核对字形及换行。修改脚本不能顺带覆盖当前确认文案。核验通过后才提交版本；仅更新大纲的日常流程仍只交付第06张。

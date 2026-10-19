@@ -5,27 +5,13 @@ from pathlib import Path
 import json, re, html, shutil
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageOps
+from typography import (load_font, line_baseline, HEADING_FONT, HEADING_SIZE,
+                        HEADING_LEADING, HEADING_OFFSET)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'output/outline-editable-v1'
 ASSETS = OUT / 'assets'
 DATA = json.loads((OUT / 'content.json').read_text(encoding='utf-8'))
-
-# Font resolution: package fonts/ first, then system fonts
-_PACKAGE_FONTS = ROOT / 'fonts'
-_SYSTEM_FONTS = Path.home() / 'AppData/Local/Microsoft/Windows/Fonts'
-
-def _font_path(name):
-    p = _PACKAGE_FONTS / name
-    if p.exists():
-        return p
-    s = _SYSTEM_FONTS / name
-    if s.exists():
-        return s
-    raise FileNotFoundError(
-        f"Font '{name}' not found in {_PACKAGE_FONTS} or {_SYSTEM_FONTS}.\n"
-        "Install fonts from the fonts/ directory: select all, right-click, 'Install for all users'."
-    )
 
 PAPER = '#f1ebdf'; INK = '#304e46'; BODY = '#46534d'; MUTED = '#69766b'; LINE = '#b6b9a9'
 FACES = {
@@ -33,16 +19,18 @@ FACES = {
     'medium': 'SourceHanSans-Medium.ttc',
     'bold':   'SourceHanSans-Bold.ttc',
     'serif':  'SourceHanSerifCN-Heavy-4.otf',
+    'heading': HEADING_FONT,
 }
 CSS_FACES = {
-    'bold':   '"Source Han Sans CN","Source Han Sans SC",sans-serif',
-    'sans':   '"Source Han Sans CN","Source Han Sans SC",sans-serif',
-    'medium': '"Source Han Sans CN","Source Han Sans SC",sans-serif',
+    'bold':   '"Source Han Sans SC","Source Han Sans CN",sans-serif',
+    'sans':   '"Source Han Sans SC","Source Han Sans CN",sans-serif',
+    'medium': '"Source Han Sans SC","Source Han Sans CN",sans-serif',
     'serif':  '"Source Han Serif CN",serif',
+    'heading': '"Source Han Serif CN",serif',
 }
 
 def font(size, face='sans'):
-    return ImageFont.truetype(str(_font_path(FACES[face])), size)
+    return load_font(FACES[face], size)
 
 def esc(text):
     return html.escape(text, quote=True)
@@ -78,9 +66,13 @@ class Panel:
         for i, s in enumerate(lines):
             assert f.getlength(s) <= width, (s, width, size)
             xx = x + (width - f.getlength(s)) / 2 if align == 'center' else x
-            self.d.text((xx, y + i * leading), s, font=f, fill=color, anchor='lt')
+            if face == 'heading':
+                baseline = line_baseline(f, y + i * leading, leading)
+                self.d.text((xx, baseline), s, font=f, fill=color, anchor='ls')
+            else:
+                self.d.text((xx, y + i * leading), s, font=f, fill=color, anchor='lt')
         height = len(lines) * leading
-        weight = 900 if face == 'serif' else 700 if face == 'bold' else 500 if face == 'medium' else 400
+        weight = 900 if face == 'serif' else 700 if face in ('bold', 'heading') else 500 if face == 'medium' else 400
         style = (f'left:{x}px;top:{y}px;width:{width}px;font-family:{CSS_FACES[face]};'
                  f'font-size:{size}px;font-weight:{weight};line-height:{leading}px;'
                  f'color:{color};text-align:{align};')
@@ -125,7 +117,9 @@ class Panel:
 
     def heading(self, text, y):
         self.image('section-heading-frame@2x.png', 312, y, 456, 80)
-        self.text(text, 312, y + 7, 52, 456, 'serif', INK, 66, 'center', tag='h2')
+        self.text(text, 312, y + HEADING_OFFSET, HEADING_SIZE, 456, 'heading',
+                  INK, HEADING_LEADING, 'center', tag='h2',
+                  extra=f'data-frame-top="{y}"')
         return y + 80
 
     def finish(self, name, tail=60):
